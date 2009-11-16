@@ -1,0 +1,5 @@
+Regenerate site with:
+
+ttree -f lib/site.cfg -a
+
+
