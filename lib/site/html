@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Beach Sunset
+Description: A two-column, fixed-width design for 1024x768 screen resolutions.
+Version    : 1.0
+Released   : 20090416
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>adelaide.pm</title>
+<meta name="keywords" content="adelaide perl adelaide.pm
+adelaide.pm.org perl mongers perlmongers" />
+<meta name="description" content="Adelaide, South Australia Perl
+Mongers group" />
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="menu">
+			<ul>
+				<li><a href="/">News</a></li>
+				<li><a href="mailing.html">Mailing List</a></li>
+				<li><a href="meetings.html">Meetings</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="links.html">Links</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</div>
+		<!-- end #menu -->
+		<div id="search">
+			<form method="get" action="http://www.google.com/search">
+				<fieldset>
+				<input type="text" name="q" id="search-text" size="15" />
+                                <input type="hidden" name="sitesearch" value="adelaide.pm.org" />
+                                <input type="submit" id="search-submit" value="Search" />
+				</fieldset>
+			</form>
+		</div>
+		<!-- end #search -->
+	</div>
+	<!-- end #header -->
+	<div id="logo">
+		<h1><a href="/">adelaide.pm</a></h1>
+		<p><em>perl mongers in Adelaide, South Australia</em></p>
+	</div>
+	<hr />
+	<!-- end #logo -->
+<!-- end #header-wrapper -->
+
+<div id="page">
+	<div id="content">
+[% content %]
+       </div>
+	<!-- end #content -->
+	<div id="sidebar">
+		<ul>
+			<li>
+				<h2>Who are we?</h2>
+				<p>Adelaide.pm - a group of perl
+ 	enthusiasts in the South Australian city of Adelaide.</p>
+			</li>
+			<li>
+				<h2>Next Meeting</h2>
+				<ul>
+					<li>Date: ???</li>
+					<li>Location: ???</li>
+					</ul>
+				</li>
+                        <li>
+                                <img alt="perl mongers logo" width="150" height="65" src="/images/pm.png" />
+                        </li>
+		</ul>
+	</div>
+	<!-- end #sidebar -->
+        <div style="clear: both;">&nbsp;</div>
+</div>
+</div>
+<!-- end #page -->
+<div id="footer">
+	<p>Copyright (c) 2009 <tt>adelaide.pm.org</tt>. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.<br />The Perl camel image is a trademark of O'Reilly Media, Inc. Used with permission.</p>
+</div>
+<!-- end #footer -->
+[% INCLUDE analytics.tt2 %]
+</body>
+</html>
