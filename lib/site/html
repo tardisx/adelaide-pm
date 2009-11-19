@@ -26,11 +26,11 @@ Mongers group" />
 		<div id="menu">
 			<ul>
 				<li><a href="/">News</a></li>
-				<li><a href="mailing.html">Mailing List</a></li>
-				<li><a href="meetings.html">Meetings</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="links.html">Links</a></li>
-				<li><a href="contact.html">Contact</a></li>
+				<li><a href="/mailing.html">Mailing List</a></li>
+				<li><a href="/meetings.html">Meetings</a></li>
+				<li><a href="/about.html">About</a></li>
+				<li><a href="/links.html">Links</a></li>
+				<li><a href="/contact.html">Contact</a></li>
 			</ul>
 		</div>
 		<!-- end #menu -->
@@ -69,8 +69,8 @@ Mongers group" />
 			<li>
 				<h2>Next Meeting</h2>
 				<ul>
-					<li>Date: ???</li>
-					<li>Location: ???</li>
+					<li>Date: TBA</li>
+					<li>Location: TBA</li>
 					</ul>
 				</li>
                         <li>
