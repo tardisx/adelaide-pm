@@ -14,8 +14,8 @@ Released   : 20090416
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>adelaide.pm</title>
-<meta name="keywords" content="adelaide perl adelaide.pm
-adelaide.pm.org perl mongers perlmongers" />
+<meta name="keywords" content="adelaide Perl adelaide.pm
+adelaide.pm.org Perl mongers Perlmongers" />
 <meta name="description" content="Adelaide, South Australia Perl
 Mongers group" />
 <link href="/style.css" rel="stylesheet" type="text/css" media="screen" />
@@ -48,7 +48,7 @@ Mongers group" />
 	<!-- end #header -->
 	<div id="logo">
 		<h1><a href="/">adelaide.pm</a></h1>
-		<p><em>perl mongers in Adelaide, South Australia</em></p>
+		<p><em>Perl mongers in Adelaide, South Australia</em></p>
 	</div>
 	<hr />
 	<!-- end #logo -->
@@ -63,18 +63,18 @@ Mongers group" />
 		<ul>
 			<li>
 				<h2>Who are we?</h2>
-				<p>Adelaide.pm - a group of perl
+				<p>Adelaide.pm - a group of Perl
  	enthusiasts in the South Australian city of Adelaide.</p>
 			</li>
 			<li>
 				<h2>Next Meeting</h2>
 				<ul>
-					<li>Date: TBA</li>
-					<li>Location: TBA</li>
+					<li>Date: Friday 22nd January, 5:30pm</li>
+					<li>Location: Exeter Hotel</li>
 					</ul>
 				</li>
                         <li>
-                                <img alt="perl mongers logo" width="150" height="65" src="/images/pm.png" />
+                                <img alt="Perl mongers logo" width="150" height="65" src="/images/pm.png" />
                         </li>
 		</ul>
 	</div>

@@ -1,11 +1,21 @@
 		<div class="post">
+			<h2 class="title">First social meeting</h2>
+			<p class="date">2010-01-07</p>
+			<div class="entry">
+<p>Welcome to 2010!</p>
+<p>Adelaide.pm's new year resolution is to hold their inaugural meeting, so please come join us on Friday, 22nd of January, at the Exeter hotel. Come meet some new Perl people, catch up with some old ones, enjoy general discussion and maybe a pint or two.</p>
+<p>See you from 5:30 onwards in the beer garden.</p>
+<iframe width="300" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?source=s_q&amp;hl=en&amp;q=exeter+hotel&amp;sll=-34.873671,138.553102&amp;sspn=0.153509,0.338173&amp;ie=UTF8&amp;cd=2&amp;hq=exeter+hotel&amp;hnear=Rundle+St,+Adelaide+SA,+Australia&amp;geocode=FW8i6_0d7RpDCA&amp;cid=12243912638925858948&amp;ll=-34.920493,138.608236&amp;spn=0.021113,0.025749&amp;z=14&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?source=embed&amp;hl=en&amp;q=exeter+hotel&amp;sll=-34.873671,138.553102&amp;sspn=0.153509,0.338173&amp;ie=UTF8&amp;cd=2&amp;hq=exeter+hotel&amp;hnear=Rundle+St,+Adelaide+SA,+Australia&amp;geocode=FW8i6_0d7RpDCA&amp;cid=12243912638925858948&amp;ll=-34.920493,138.608236&amp;spn=0.021113,0.025749&amp;z=14" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+			</div>
+		</div>
+		<div class="post">
 			<h2 class="title">Welcome to adelaide.pm</h2>
 			<p class="date">2009-11-15</p>
 			<div class="entry">
 <p>Welcome to the new adelaide.pm site! We are aiming to fill the
   gaping void between perth.pm on the west coast of Australia, and
-  the various east coast perl monger groups. Welcome to all South
-  Australian perl folks, and, of course, even if you aren't a South
+  the various east coast Perl monger groups. Welcome to all South
+  Australian Perl folks, and, of course, even if you aren't a South
   Aussie, you're welcome to join us!</p>
 
 <p>Sign up for the <a href="/mailing.html">mailing list</a> and we'll
