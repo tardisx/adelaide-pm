@@ -8,6 +8,9 @@ use DateTime::Set;
 use DateTime::Span;
 use Date::Holidays::AU qw/is_holiday/;
 
+our @ISA = qw(Exporter);
+our @EXPORT_OK = qw(next_meeting last_meeting meeting_id id_meeting);
+
 our $first = DateTime->new( year => 2010, month => 2, day => 1 );
 our $last  = DateTime->new( year => 2012, month => 1, day => 1 );
 
@@ -68,7 +71,6 @@ sub next_meeting {
 }
 
 sub meeting_id {
-  my $class = shift;
   my $meeting = shift;
 
   my $iter = $dates->iterator;
@@ -82,7 +84,6 @@ sub meeting_id {
 }
 
 sub id_meeting {
-  my $class = shift;
   my $id = shift;
 
   my $iter = $dates->iterator;
