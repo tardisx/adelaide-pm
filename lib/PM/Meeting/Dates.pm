@@ -56,5 +56,23 @@ sub next_meeting {
     return;
 }
 
+sub id_meeting {
+    my $self = shift;
+    my $wanted_id   = shift;
+    my $now  = DateTime->now();
+
+    my $id = 0;
+
+    $self->setup_meeting_dates() unless $self->dates();
+
+    my $iter = $self->dates()->iterator;
+    while ( my $dt = $iter->next ) {
+        $id++;
+        next unless $id == $wanted_id;
+        return PM::Meeting->new( date => $dt, id => $id );
+    }
+    return;
+}
+
 
 1;

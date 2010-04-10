@@ -69,7 +69,14 @@ Mongers group" />
 			<li>
 				<h2>Next Meeting</h2>
 				<ul>
-					<li>Date: Friday 22nd January, 5:30pm</li>
+[% PERL %]
+use lib '../lib';
+use PM::Meeting::Dates::Adelaide;
+my $meetings = PM::Meeting::Dates::Adelaide->new();
+my $meeting = $meetings->next_meeting;
+$stash->{meeting_date} = $meeting->date->strftime("%A %B %d, %Y");
+[% END %]
+					<li>Date: [% meeting_date %]</li>
 					<li>Location: Exeter Hotel</li>
 					</ul>
 				</li>
