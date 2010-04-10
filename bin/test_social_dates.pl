@@ -3,9 +3,9 @@
 use strict;
 use warnings;
 
-use PM::Adelaide::Dates;
+use PM::Meeting::Dates::Adelaide;
 
-my $obj = PM::Adelaide::Dates->new();
+my $obj = PM::Meeting::Dates::Adelaide->new();
 
-warn $obj->next_meeting;
-warn $obj->last_meeting;
+warn "NEXT: " . $obj->next_meeting->id . " " .  $obj->next_meeting->date;
+warn "PREV: " . $obj->last_meeting->id . " " .  $obj->last_meeting->date;
