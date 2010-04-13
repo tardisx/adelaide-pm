@@ -36,7 +36,7 @@ sub last_meeting {
     }
     $id--;
     return if ( $id <= 0 );
-    return PM::Meeting->new( date => $last, id => $id );
+    return $self->setup_meeting( date => $last, id => $id );
 }
 
 sub next_meeting {
@@ -51,7 +51,7 @@ sub next_meeting {
     while ( my $dt = $iter->next ) {
         $id++;
         next unless $dt >= $now;
-        return PM::Meeting->new( date => $dt, id => $id );
+        return $self->setup_meeting( date => $dt, id => $id );
     }
     return;
 }

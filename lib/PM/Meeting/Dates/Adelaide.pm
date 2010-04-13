@@ -2,14 +2,57 @@ package PM::Meeting::Dates::Adelaide;
 
 use strict;
 use warnings;
+use Carp qw/croak/;
 
 use Moose;
 use DateTime;
 use DateTime::Set;
 use DateTime::Span;
+
 use Date::Holidays::AU qw/is_holiday/;
 
+use PM::Meeting;
+
 extends 'PM::Meeting::Dates';
+
+
+# Override venues.
+our %date_venue_override = (
+  '2010-04-23' => 'Irish place'
+);
+
+# Default venue.
+our $default_venue = 'Exeter';
+
+
+=head2 setup_meeting
+
+Setup this meeting, by id and date.
+
+=cut
+
+sub setup_meeting {
+  my $self = shift;
+  my %args = @_;
+  my $dt = $args{date};
+  my $id = $args{id};
+
+  croak "No id" unless $id;
+  croak "No date" unless $dt;
+
+  my $meeting = PM::Meeting->new( date => $dt, id => $id );
+  my $venue   = $date_venue_override{$dt->format_cldr('yyyy-MM-dd')} || $default_venue;
+  $meeting->venue($venue);
+
+  return $meeting;
+}
+
+=head2 setup_meeting_dates
+
+Construct a DateTime::Set consisting of all the dates for Adelaide.pm meetings
+for the foreseeable future.
+
+=cut
 
 sub setup_meeting_dates {
 
@@ -52,7 +95,6 @@ sub setup_meeting_dates {
     );
 
     $self->dates($dates);
-
 }
 
 

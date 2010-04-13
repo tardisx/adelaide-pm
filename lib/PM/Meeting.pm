@@ -11,4 +11,7 @@ has 'id'   => ( is => 'rw', isa => 'Int' );
 # The date of this meeting
 has 'date' => ( is => 'rw', isa => 'DateTime' );
 
+# Venue
+has 'venue' => ( is => 'rw', isa => 'Str' );
+
 1;
