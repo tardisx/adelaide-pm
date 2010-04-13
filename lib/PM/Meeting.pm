@@ -15,3 +15,19 @@ has 'date' => ( is => 'rw', isa => 'DateTime' );
 has 'venue' => ( is => 'rw', isa => 'Str' );
 
 1;
+
+__END__
+
+=head1 NAME
+ 
+PM::Meeting - A Perl Mongers meeting
+
+=head1 SYNOPSIS
+
+  my $meeting = PM::Meeting->new( id => 1, date => $DateTimeObj, venue => 'local pub');
+
+=head1 DESCRIPTION
+
+This module provides objects representing individual Perl Mongers meetings.
+
+=cut
