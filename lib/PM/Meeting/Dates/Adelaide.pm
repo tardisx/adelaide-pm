@@ -16,6 +16,12 @@ use PM::Meeting;
 extends 'PM::Meeting::Dates';
 
 
+# Override dates.
+our %date_override = (
+  # EXAMPLE move this meeting to the 26th
+  # '2010-04-23' => '2010-04-26',
+);
+
 # Override venues.
 our %date_venue_override = (
   '2010-04-23' => 'Irish place'
@@ -92,6 +98,18 @@ sub setup_meeting_dates {
             }
             return $_;
         }
+    );
+
+    # Lastly (and must be last), check our overrides
+    $dates = $dates->map(
+      sub {
+        my $date_str = sprintf("%04d-%02d-%02d", $_->year, $_->month, $_->day);
+        if ($date_override{$date_str}) {
+          my @ymd = split(/\-/, $date_override{$date_str});
+          $_->set( year => $ymd[0], month => $ymd[1], day => $ymd[2] );
+        }
+        return $_;
+      }
     );
 
     $self->dates($dates);
