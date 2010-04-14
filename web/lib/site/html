@@ -75,7 +75,7 @@ use PM::Meeting::Dates::Adelaide::Tech;
 $stash->{next_tech}   = PM::Meeting::Dates::Adelaide::Tech->new()->next_meeting();
 $stash->{next_social} = PM::Meeting::Dates::Adelaide::Social->new()->next_meeting();
 [% END %]
-				<h2>Upcoming Meeting</h2>
+				<h2>Upcoming Meetings</h2>
 				<h3>Social:</h3>
 				<ul>
 					<li>Date: <b>[% next_social.nice_date %]</b></li>
