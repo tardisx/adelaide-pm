@@ -1,4 +1,14 @@
 		<div class="post">
+			<h2 class="title">New social meeting world order</h2>
+			<p class="date">2010-04-14</p>
+			<div class="entry">
+<p>After getting tired of trying to schedule meetings to suit everybodies schedule (hint: you can't)
+I decided to just invent an algorithm, write some code and automate it.</p>
+<p>Social meeting dates are now determined by a rule, and published automatically to the web page
+and mailing list footer.</p>
+                        </div>
+                </div>
+		<div class="post">
 			<h2 class="title">First social meeting</h2>
 			<p class="date">2010-02-17</p>
 			<div class="entry">
