@@ -17,6 +17,8 @@ has 'final'  => ( is => 'rw', isa => 'DateTime' );
 
 has 'dates' => ( is => 'rw', isa => 'DateTime::Set' );
 
+has 'iterator' => ( is => 'rw', isa => 'DateTime::Set', clearer => 'clear_iterator' );
+
 =head2 last_meeting
 
 Return the meeting that happened most recently.
@@ -65,6 +67,32 @@ sub next_meeting {
         return $self->setup_meeting( date => $dt, id => $id );
     }
     return;
+}
+
+
+=head2 next
+
+Return the next one.
+
+=cut
+
+sub next {
+    my $self = shift;
+    our $id;
+
+    if (! $self->iterator) {
+      $id = 0;
+      $self->iterator($self->dates()->iterator)
+    }
+
+    my $next = $self->iterator->next;
+    $id++;
+    if (! $next) {
+        $self->clear_iterator();
+        return undef;
+    }
+
+    return $self->setup_meeting( date => $next, id => $id );
 }
 
 sub setup_meeting {

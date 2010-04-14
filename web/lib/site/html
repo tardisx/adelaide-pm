@@ -18,19 +18,19 @@ Released   : 20090416
 adelaide.pm.org Perl mongers Perlmongers" />
 <meta name="description" content="Adelaide, South Australia Perl
 Mongers group" />
-<link href="/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 <div id="wrapper">
 	<div id="header">
 		<div id="menu">
 			<ul>
-				<li><a href="/">News</a></li>
-				<li><a href="/mailing.html">Mailing List</a></li>
-				<li><a href="/meetings.html">Meetings</a></li>
-				<li><a href="/about.html">About</a></li>
-				<li><a href="/links.html">Links</a></li>
-				<li><a href="/contact.html">Contact</a></li>
+				<li><a href="index.html">News</a></li>
+				<li><a href="mailing.html">Mailing List</a></li>
+				<li><a href="meetings.html">Meetings</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="links.html">Links</a></li>
+				<li><a href="contact.html">Contact</a></li>
 			</ul>
 		</div>
 		<!-- end #menu -->
@@ -67,11 +67,25 @@ Mongers group" />
  	enthusiasts in the South Australian city of Adelaide.</p>
 			</li>
 			<li>
-				<h2>Next Meeting</h2>
+
+[% PERL %]
+use lib '../lib';
+use PM::Meeting::Dates::Adelaide::Social;
+use PM::Meeting::Dates::Adelaide::Tech;
+$stash->{next_tech}   = PM::Meeting::Dates::Adelaide::Tech->new()->next_meeting();
+$stash->{next_social} = PM::Meeting::Dates::Adelaide::Social->new()->next_meeting();
+[% END %]
+				<h2>Upcoming Meeting</h2>
+				<h3>Social:</h3>
 				<ul>
-					<li>Date: Friday 22nd January, 5:30pm</li>
-					<li>Location: Exeter Hotel</li>
-					</ul>
+					<li>Date: <b>[% next_social.nice_date %]</b></li>
+					<li>Location: <b>[% next_social.venue %]</b></li>
+				</ul>
+				<h3>Tech:</h3>
+				<ul>
+					<li>Date: <b>[% next_tech.nice_date %]</b></li>
+					<li>Location: <b>[% next_tech.venue %]</b></li>
+				</ul>
 				</li>
                         <li>
                                 <img alt="Perl mongers logo" width="150" height="65" src="/images/pm.png" />

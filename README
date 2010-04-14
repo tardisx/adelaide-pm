@@ -1,5 +1,5 @@
 Regenerate site with:
 
-cd web && ttree -f lib/site.cfg -a
+cd web && ttree --EVAL_PERL -f lib/site.cfg -a
 
 

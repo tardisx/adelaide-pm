@@ -14,6 +14,14 @@ has 'date' => ( is => 'rw', isa => 'DateTime' );
 # Venue
 has 'venue' => ( is => 'rw', isa => 'Str' );
 
+
+sub nice_date {
+    my $self = shift;
+
+    my $dt = $self->date;
+    return $dt->strftime("%a, %d %b");
+}
+
 1;
 
 __END__

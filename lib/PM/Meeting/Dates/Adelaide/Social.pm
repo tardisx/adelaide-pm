@@ -1,10 +1,11 @@
-package PM::Meeting::Dates::Adelaide;
+package PM::Meeting::Dates::Adelaide::Social;
 
 use strict;
 use warnings;
 use Carp qw/croak/;
 
 use Moose;
+
 use DateTime;
 use DateTime::Set;
 use DateTime::Span;
@@ -16,10 +17,14 @@ use PM::Meeting;
 extends 'PM::Meeting::Dates';
 
 
-# Override dates.
+# Override dates, either moving them to a new date, or skipping them entirely.
+# Note that it would be extremely bad to move or delete a date that had already
+# occurred.
 our %date_override = (
   # EXAMPLE move this meeting to the 26th
-  # '2010-04-23' => '2010-04-26',
+  # '2010-04-23' => '2010-09-26',
+  # EXAMPLE skip this meeting XXX this is broken see below
+  # '2010-07-26' => undef,
 );
 
 # Override venues.
@@ -55,7 +60,7 @@ sub setup_meeting {
 
 =head2 setup_meeting_dates
 
-Construct a DateTime::Set consisting of all the dates for Adelaide.pm meetings
+Construct a DateTime::Set consisting of all the social dates for Adelaide.pm meetings
 for the foreseeable future.
 
 =cut
@@ -109,6 +114,20 @@ sub setup_meeting_dates {
           $_->set( year => $ymd[0], month => $ymd[1], day => $ymd[2] );
         }
         return $_;
+      }
+    );
+
+    # Remove meetings that we skip
+    # XXX currently broken
+    $dates = $dates->grep(
+      sub {
+        my $date_str = sprintf("%04d-%02d-%02d", $_->year, $_->month, $_->day);
+        if (exists $date_override{$date_str} && ! defined $date_override{$date_str}) {
+          warn "removing $date_str";
+          return (0);
+        }
+        warn "preserving $date_str";
+        return (1);
       }
     );
 

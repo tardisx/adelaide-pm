@@ -292,11 +292,11 @@ hr { display: none; }
 
 #sidebar li {
 	margin-bottom: 30px;
-	padding: 0 0 20px 0px;
+	padding: 0 0 9px 0px;
 }
 
 #sidebar li ul {
-	line-height: 200%;
+	line-height: 100%;
 }
 
 #sidebar li li {
