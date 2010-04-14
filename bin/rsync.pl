@@ -3,4 +3,8 @@
 use strict;
 use warnings;
 
-system('rsync', '-a', '/home/justin/Maildir/.lists.adelaidepm/', '/home/justin/working/adelaidepm/archive/');
+chdir 'web' || die $!;
+system ('ttree', '--EVAL_PERL', '-f', 'lib/site.cfg', '-a');
+system('rsync', '--delete', '-qa',  'html/', '/home/justin/web/adelaidepm/');
+
+
