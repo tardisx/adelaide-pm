@@ -3,10 +3,15 @@
 use strict;
 use warnings;
 
+use lib 'lib';
+
 use WWW::Mailman;
 
-use Data::Dumper;
+use PM::Meeting::Dates::Adelaide::Social;
+use PM::Meeting::Dates::Adelaide::Tech;
 
+my $tech = PM::Meeting::Dates::Adelaide::Tech->new();
+my $social = PM::Meeting::Dates::Adelaide::Social->new();
 
 my $mm = WWW::Mailman->new(
   server   => 'mail.pm.org',
@@ -16,17 +21,16 @@ my $mm = WWW::Mailman->new(
 );
 
 my $admin = $mm->admin_nondigest();
-
-warn Dumper($admin);
-
+my $next_social = $social->next_meeting()->nice_date();
+my $next_tech   = $tech->next_meeting()->nice_date();
 
 my $footer = { 'msg_footer' => qq{
-_______________________________________________
-http://adelaide.pm.org/
-adelaide-pm\@pm.org
+___________________________________________________
+http://adelaide.pm.org/   Next Social: $next_social
+adelaide-pm\@pm.org        Next Tech:   $next_tech
 %(web_page_url)slistinfo%(cgiext)s/%(_internal_name)s
 } };
 
 $mm->admin_nondigest($footer);
-
+# die $footer->{msg_footer};
 
