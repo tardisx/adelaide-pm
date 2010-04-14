@@ -16,7 +16,6 @@ use PM::Meeting;
 
 extends 'PM::Meeting::Dates';
 
-
 # Override dates, either moving them to a new date, or skipping them entirely.
 # Note that it would be extremely bad to move or delete a date that had already
 # occurred.
@@ -29,7 +28,7 @@ our %date_override = (
 
 # Override venues.
 our %date_venue_override = (
-  '2010-04-23' => 'Irish place'
+   '2010-04-23' => 'Brecknock'
 );
 
 # Default venue.
