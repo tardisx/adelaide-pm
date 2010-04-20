@@ -122,10 +122,8 @@ sub setup_meeting_dates {
       sub {
         my $date_str = sprintf("%04d-%02d-%02d", $_->year, $_->month, $_->day);
         if (exists $date_override{$date_str} && ! defined $date_override{$date_str}) {
-          warn "removing $date_str";
           return (0);
         }
-        warn "preserving $date_str";
         return (1);
       }
     );
