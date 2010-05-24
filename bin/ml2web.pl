@@ -94,13 +94,14 @@ foreach my $messageId ( $newFolder->messageIds ) {
   my $from    = $message->from;
   my $body    = $message->body;
 
-  # XXX we need to escape the body somehow so that TT cannot interpret
-  # it.
-
   # reformat the body
   if ($autoformat) {
     $body = autoformat({ all => 1 }, $body);
   }
+
+  # escape the body
+  $body =~ s/\[/&#91;/gsm;
+  $body =~ s/\]/&#93;/gsm;
 
   # obfuscate
   if ($obfuscate) {
