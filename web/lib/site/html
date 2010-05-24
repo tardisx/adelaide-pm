@@ -98,7 +98,7 @@ $stash->{next_social} = PM::Meeting::Dates::Adelaide::Social->new()->next_meetin
 </div>
 <!-- end #page -->
 <div id="footer">
-	<p>Copyright (c) 2009 <tt>adelaide.pm.org</tt>. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.<br />The Perl camel image is a trademark of O'Reilly Media, Inc. Used with permission.</p>
+	<p>Copyright (c) 2010 <tt>adelaide.pm.org</tt>. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.<br />The Perl camel image is a trademark of O'Reilly Media, Inc. Used with permission.</p>
 </div>
 <!-- end #footer -->
 [% INCLUDE analytics.tt2 %]
