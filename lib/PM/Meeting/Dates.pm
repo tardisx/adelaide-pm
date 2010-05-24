@@ -17,6 +17,13 @@ has 'final'  => ( is => 'rw', isa => 'DateTime' );
 
 has 'dates' => ( is => 'rw', isa => 'DateTime::Set' );
 
+has 'iterator' => ( is => 'rw', isa => 'DateTime::Set', clearer => 'clear_iterator' );
+
+=head2 last_meeting
+
+Return the meeting that happened most recently.
+
+=cut
 
 sub last_meeting {
     my $self = shift;
@@ -36,8 +43,14 @@ sub last_meeting {
     }
     $id--;
     return if ( $id <= 0 );
-    return PM::Meeting->new( date => $last, id => $id );
+    return $self->setup_meeting( date => $last, id => $id );
 }
+
+=head2 next_meeting
+
+Return the meeting object for the next upcoming meeting.
+
+=cut
 
 sub next_meeting {
     my $self = shift;
@@ -51,7 +64,7 @@ sub next_meeting {
     while ( my $dt = $iter->next ) {
         $id++;
         next unless $dt >= $now;
-        return PM::Meeting->new( date => $dt, id => $id );
+        return $self->setup_meeting( date => $dt, id => $id );
     }
     return;
 }
@@ -72,6 +85,44 @@ sub id_meeting {
         return PM::Meeting->new( date => $dt, id => $id );
     }
     return;
+}
+
+
+=head2 next
+
+Return the next one.
+
+=cut
+
+sub next {
+    my $self = shift;
+    our $id;
+
+    if (! $self->iterator) {
+      $id = 0;
+      $self->iterator($self->dates()->iterator)
+    }
+
+    my $next = $self->iterator->next;
+    $id++;
+    if (! $next) {
+        $self->clear_iterator();
+        return undef;
+    }
+
+    return $self->setup_meeting( date => $next, id => $id );
+}
+
+sub setup_meeting {
+  my $self = shift;
+
+  confess "setup_meeting was not provided by $self";
+}
+
+sub setup_meeting_dates {
+  my $self = shift;
+
+  confess "setup_meeting_dates was not provided by $self";
 }
 
 

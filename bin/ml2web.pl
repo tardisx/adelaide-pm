@@ -2,12 +2,15 @@
 
 use strict;
 use warnings;
-use Mail::Box::Maildir;
+use Mail::Box::Mbox;
 use Getopt::Long;
+use HTML::Entities;
+use LWP::Simple qw/get/;
+use File::Temp qw/tmpnam/;
 
 =head1 NAME
 
-ml2web.pl - turn MH mail files into TT files
+ml2web.pl - turn web archives into fabulous local archives
 
 =cut
 
@@ -44,16 +47,37 @@ if ($autoformat) {
 
 $ENV{TZ} = 'Australia/Adelaide';
 
-my $mbox_dir = '/home/justin/working/adelaidepm/archive/';
-my $tt_dir = 'pages/mailing';
+my $tt_dir = 'web/pages/mailing';
+
+my $root_url = 'http://mail.pm.org/pipermail/adelaide-pm/';
+my $root_page = get $root_url;
+die unless $root_page;
+
+my @urls;
+foreach (split /\n/, $root_page) {
+  # <td><A href="2010-May.txt">[ Text 1 KB ]</a></td>
+  next unless m/"(\d\d\d\d)\-(\w+)\.txt">\[\s+Text\s+(\d+)/;
+  my ($year, $month) = ($1, $2);
+  push @urls, "$root_url$year-$month.txt";
+}
 
 my $mails = {};
+my $main_index = {};
+foreach my $mbox_url (@urls) {
 
-my $folder = new Mail::Box::Maildir folder =>  $mbox_dir, lock_type=> 'NONE';
+my $mbox_file = tmpnam();
+my $archive = get $mbox_url;
+die unless $archive;
+
+open (my $mfh, ">", $mbox_file)  || die;
+print $mfh $archive;
+close $mfh;
+
+warn "processing $mbox_file";
+my $folder = Mail::Box::Mbox->new(folder => $mbox_file);
 
 my $fh = {};
 
-my $main_index = {};
 
 my $newFolder = $folder;
 my $count = 0;
@@ -68,12 +92,19 @@ foreach my $messageId ( $newFolder->messageIds ) {
   $main_index->{$year}->{$month}++;
                                         
   my $subject = $message->subject;
-  my $from    = $message->from;
+  my $from    = $message->sender->format;
   my $body    = $message->body;
 
   # reformat the body
   if ($autoformat) {
     $body = autoformat({ all => 1 }, $body);
+  }
+
+  # escape the body and other things
+  foreach ($body, $subject, $from) { 
+    encode_entities($_);   # for general HTML
+    s/\[/&#91;/gsm;  # for TT
+    s/\]/&#93;/gsm;
   }
 
   # obfuscate
@@ -102,10 +133,15 @@ foreach my $messageId ( $newFolder->messageIds ) {
   print $mailfh "Subject: $subject<br>";
   print $mailfh "Date:    ".localtime($message->timestamp())."<br>";
   print $mailfh "From:    $from<br><br>";
+warn $from;
+  # print $mailfh "From:    $from<br><br>";
   print $mailfh "<pre>\n";
   print $mailfh $body;
   print $mailfh "</pre>\n";
   close $mailfh;
+}
+
+  unlink $mbox_file;
 }
 
 # update the main archive index page.
