@@ -55,7 +55,7 @@ die unless $root_page;
 my @urls;
 foreach (split /\n/, $root_page) {
   # <td><A href="2010-May.txt">[ Text 1 KB ]</a></td>
-  next unless m/"(\d\d\d\d)\-(\w+)\.txt">\[\s+Text\s+(\d+)\s+KB/;
+  next unless m/"(\d\d\d\d)\-(\w+)\.txt">\[\s+Text\s+(\d+)/;
   my ($year, $month) = ($1, $2);
   push @urls, "$root_url$year-$month.txt";
 }
@@ -94,6 +94,9 @@ foreach my $messageId ( $newFolder->messageIds ) {
   my $from    = $message->from;
   my $body    = $message->body;
 
+  # XXX we need to escape the body somehow so that TT cannot interpret
+  # it.
+
   # reformat the body
   if ($autoformat) {
     $body = autoformat({ all => 1 }, $body);
@@ -125,6 +128,7 @@ foreach my $messageId ( $newFolder->messageIds ) {
   print $mailfh "Subject: $subject<br>";
   print $mailfh "Date:    ".localtime($message->timestamp())."<br>";
   print $mailfh "From:    $from<br><br>";
+  # print $mailfh "From:    $from<br><br>";
   print $mailfh "<pre>\n";
   print $mailfh $body;
   print $mailfh "</pre>\n";
