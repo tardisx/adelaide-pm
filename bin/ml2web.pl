@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use Mail::Box::Mbox;
 use Getopt::Long;
+use HTML::Entities;
 use LWP::Simple qw/get/;
 use File::Temp qw/tmpnam/;
 
@@ -91,7 +92,7 @@ foreach my $messageId ( $newFolder->messageIds ) {
   $main_index->{$year}->{$month}++;
                                         
   my $subject = $message->subject;
-  my $from    = $message->from;
+  my $from    = $message->sender->format;
   my $body    = $message->body;
 
   # reformat the body
@@ -99,9 +100,12 @@ foreach my $messageId ( $newFolder->messageIds ) {
     $body = autoformat({ all => 1 }, $body);
   }
 
-  # escape the body
-  $body =~ s/\[/&#91;/gsm;
-  $body =~ s/\]/&#93;/gsm;
+  # escape the body and other things
+  foreach ($body, $subject, $from) { 
+    encode_entities($_);   # for general HTML
+    s/\[/&#91;/gsm;  # for TT
+    s/\]/&#93;/gsm;
+  }
 
   # obfuscate
   if ($obfuscate) {
@@ -129,6 +133,7 @@ foreach my $messageId ( $newFolder->messageIds ) {
   print $mailfh "Subject: $subject<br>";
   print $mailfh "Date:    ".localtime($message->timestamp())."<br>";
   print $mailfh "From:    $from<br><br>";
+warn $from;
   # print $mailfh "From:    $from<br><br>";
   print $mailfh "<pre>\n";
   print $mailfh $body;
