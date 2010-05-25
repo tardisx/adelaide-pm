@@ -73,7 +73,6 @@ open (my $mfh, ">", $mbox_file)  || die;
 print $mfh $archive;
 close $mfh;
 
-warn "processing $mbox_file";
 my $folder = Mail::Box::Mbox->new(folder => $mbox_file);
 
 my $fh = {};
@@ -133,8 +132,6 @@ foreach my $messageId ( $newFolder->messageIds ) {
   print $mailfh "Subject: $subject<br>";
   print $mailfh "Date:    ".localtime($message->timestamp())."<br>";
   print $mailfh "From:    $from<br><br>";
-warn $from;
-  # print $mailfh "From:    $from<br><br>";
   print $mailfh "<pre>\n";
   print $mailfh $body;
   print $mailfh "</pre>\n";
