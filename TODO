@@ -1,0 +1,5 @@
+Make date calculations respect timezone and time so that the 'next meeting' doesn't
+rollover until the meeting is actually past (not just we reached the day it is on,
+UTC time).
+
+
