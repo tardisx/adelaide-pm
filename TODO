@@ -2,4 +2,21 @@ Make date calculations respect timezone and time so that the 'next meeting' does
 rollover until the meeting is actually past (not just we reached the day it is on,
 UTC time).
 
+-- 
 
+Make meeting info pages based on the unique id:
+
+  /meeting/social/1
+  /meeting/social/2 
+  /meeting/tech/1     etc
+
+Link automatically from sidebar and cross link each one (next/prev).
+
+-- 
+
+Remove all the hardcoded junk so it could be put on github.
+
+-- 
+
+Create a blog style thing for the news, and union that with the meeting
+updates.
