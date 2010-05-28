@@ -1,3 +1,9 @@
 Here lies the code for generating the Adelaide Perl Mongers web site!
 
+It contains:
+
+* some perl libs for dealing with meeting dates (in lib/)
+* some template files for generating the web site (in web/)
+* some (primitive) tests (in t/)
+* some scripts to tie it all together (bin/)
 
