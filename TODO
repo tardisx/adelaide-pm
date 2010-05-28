@@ -1,3 +1,8 @@
+--
+
+Make relative links correctly so that you can browse the site offline when it's not in /
+This is not essential, but nice for development.
+This includes fixing CSS links.
 Make date calculations respect timezone and time so that the 'next meeting' doesn't
 rollover until the meeting is actually past (not just we reached the day it is on,
 UTC time).
@@ -20,3 +25,4 @@ Remove all the hardcoded junk so it could be put on github.
 
 Create a blog style thing for the news, and union that with the meeting
 updates.
+
