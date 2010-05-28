@@ -12,7 +12,7 @@ my $platform = `uname`;
 chomp $platform;
 
 system ("/usr/bin/prove","--archive",$filename);
-system ("/usr/local/bin/smolder_smoke_signal","--server","perlcode.info","--port","8008","--username","justin","--password","foobar","--file", $filename,  "--project","adelaidepm", "--revision", $revision, "--platform", $platform);
+system ("/usr/local/bin/smolder_smoke_signal","--server","perlcode.info","--port","8008","--username","justin","--password",$ENV{SMOLDER_PASSWORD},"--file", $filename,  "--project","adelaidepm", "--revision", $revision, "--platform", $platform);
 
 unlink $filename;
 
