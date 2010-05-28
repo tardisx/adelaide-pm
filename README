@@ -1,5 +1,3 @@
-Regenerate site with:
-
-cd web && ttree --EVAL_PERL -f lib/site.cfg -a
+Here lies the code for generating the Adelaide Perl Mongers web site!
 
 
