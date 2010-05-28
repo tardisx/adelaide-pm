@@ -17,7 +17,10 @@ my $mm = WWW::Mailman->new(
   server   => 'mail.pm.org',
   list     => 'adelaide-pm',
 
-  admin_password => 'deaweridmo'
+  # Note that this used to be hardcoded. If you think
+  # you can find it by searching git commits, please note
+  # that it has already been changed :-)
+  admin_password => $ENV{MAILMAN_PASSWORD},
 );
 
 my $admin = $mm->admin_nondigest();
