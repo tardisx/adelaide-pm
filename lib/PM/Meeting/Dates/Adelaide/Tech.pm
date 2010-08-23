@@ -49,7 +49,7 @@ sub setup_meeting_dates {
 
     my @meeting_dates = ( 
                          DateTime->new( year => 2010, month => 4, day => 28 ),
-                         DateTime->new( year => 2010, month => 8, day => 24 ),
+                         DateTime->new( year => 2010, month => 8, day => 26 ),
                         );
     my $dates = DateTime::Set->from_datetimes( dates => [ @meeting_dates ] );
 
