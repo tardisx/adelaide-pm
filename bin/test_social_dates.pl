@@ -4,9 +4,8 @@ use strict;
 use warnings;
 
 use PM::Meeting::Dates::Adelaide::Social;
-use PM::Meeting::Dates::Adelaide::Tech;
 
-my $obj = PM::Meeting::Dates::Adelaide::Tech->new();
+my $obj = PM::Meeting::Dates::Adelaide::Social->new();
 
 warn "NEXT: " . $obj->next_meeting->id . " " .  $obj->next_meeting->date;
 warn "PREV: " . $obj->last_meeting->id . " " .  $obj->last_meeting->date;
