@@ -72,7 +72,6 @@ sub next_meeting {
 sub id_meeting {
     my $self = shift;
     my $wanted_id   = shift;
-    my $now  = DateTime->now();
 
     my $id = 0;
 
