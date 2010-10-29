@@ -1,0 +1,11 @@
+[% PERL %]
+use lib '../lib';
+use PM::Meeting::Dates::Adelaide::Social;
+my $social_meetings = PM::Meeting::Dates::Adelaide::Social->new();
+my $meeting = $social_meetings->id_meeting(8);
+$stash->{meeting}   = $meeting;
+[% END %]
+
+<h1>Social meeting [% meeting.id %], [% meeting.nice_date() %].</h1>
+
+[% content %]

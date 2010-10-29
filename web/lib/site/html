@@ -74,7 +74,12 @@ use PM::Meeting::Dates::Adelaide::Social;
 use PM::Meeting::Dates::Adelaide::Tech;
 $stash->{next_tech}   = PM::Meeting::Dates::Adelaide::Tech->new()->next_meeting();
 $stash->{next_social} = PM::Meeting::Dates::Adelaide::Social->new()->next_meeting();
+$stash->{last_social} = PM::Meeting::Dates::Adelaide::Social->new()->last_meeting();
 [% END %]
+                                <h2>Previous social</h2>
+                                <ul><li><a href="/meetings/social_[% last_social.id %].html">
+                                        [% last_social.nice_date %]
+                                        </a></li</ul>
 				<h2>Upcoming Meetings</h2>
 				<h3>Social:</h3>
 				<ul>
