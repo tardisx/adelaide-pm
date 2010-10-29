@@ -7,3 +7,8 @@ It contains:
 * some (primitive) tests (in t/)
 * some scripts to tie it all together (bin/)
 
+To build the website do:
+
+$ chdir web
+$ ttree --EVAL_PERL -f lib/site.cfg -a --verbose 
+
