@@ -25,6 +25,7 @@ our %date_override = (
   # EXAMPLE skip this meeting XXX this is broken see below
   # '2010-07-26' => undef,
   '2010-10-26' => '2010-10-28',
+  '2010-11-26' => '2010-11-29',
 );
 
 # Override venues.
