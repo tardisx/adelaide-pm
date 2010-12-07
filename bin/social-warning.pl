@@ -22,8 +22,8 @@ if ($check eq $next->date()->truncate( to => 'day' )) {
   $msg->subject('Next social advance warning: ' . $next->nice_date());
   $msg->to('justin@hawkins.id.au');
   my $fh = $msg->open ;
-  print $fh "The next Adelaide.pm social is only $advance days away!\n";
+  print $fh "The next adelaide.pm social is only $advance days away!\n";
   print $fh "\nSee you on " . $next->nice_date() . "!\n\n";
-  print $fh "Regards, the Adelaide.pm automated reminder robot\n\n";
+  print $fh "Regards, the adelaide.pm automated reminder robot\n\n";
   close ($fh);
 }
