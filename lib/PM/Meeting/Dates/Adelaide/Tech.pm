@@ -48,8 +48,9 @@ sub setup_meeting_dates {
     my $self = shift;
 
     my @meeting_dates = ( 
-                         DateTime->new( year => 2010, month => 4, day => 28 ),
-                         DateTime->new( year => 2010, month => 8, day => 26 ),
+                         DateTime->new( year => 2010, month =>  4, day => 28 ),
+                         DateTime->new( year => 2010, month =>  8, day => 26 ),
+                         DateTime->new( year => 2010, month => 12, day => 16 ),
                         );
     my $dates = DateTime::Set->from_datetimes( dates => [ @meeting_dates ] );
 
