@@ -2,8 +2,33 @@
 use lib '../lib';
 use PM::Meeting::Dates::Adelaide::Social;
 my $social_meetings = PM::Meeting::Dates::Adelaide::Social->new();
-my $meeting = $social_meetings->id_meeting(8);
+my $id = $stash->{matches}->[0];
+my $meeting = $social_meetings->id_meeting($id);
 $stash->{meeting}   = $meeting;
+my $prev_id   = $meeting->id() - 1;
+my $next_id   = $meeting->id() + 1;
+my $prev_link;
+my $next_link;
+
+if ($prev_id) {
+  if (-f "pages/meetings/social_${prev_id}.tt2") { 
+    $prev_link = "/meetings/social_${prev_id}.html";
+  }
+}
+
+if ($next_id) {
+  if (-f "pages/meetings/social_${next_id}.tt2") { 
+    $next_link = "/meetings/social_${next_id}.html";
+  }
+}
+[% END %]
+
+[% IF prev_link %] 
+[[<a href="[% $prev_link %]">Previous</a>]
+[% END %]
+
+[% IF next_link %] 
+[[<a href="[% $next_link %]">Next</a>]
 [% END %]
 
 <h1>Social meeting [% meeting.id %], [% meeting.nice_date() %].</h1>

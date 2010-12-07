@@ -1,7 +1,8 @@
+[% matches = template.name.match('meetings\/social_(\d+)') %]
 [% IF template.name.match('\.(css|js|txt)');
      debug("Passing page through as text: $template.name");
      content;
-  ELSIF template.name.match('meetings\/social_(\d+)');
+  ELSIF matches.0;
      debug("Applying HTML page layout wrappers to SOCIAL $template.name\n");
      content WRAPPER html + social_layout;
    ELSE;
