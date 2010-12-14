@@ -16,6 +16,11 @@ extends 'PM::Meeting::Dates';
 # Default venue.
 our $default_venue = 'Quantum Adelaide';
 
+our %date_venue_override = (
+   '2010-12-16' => '115 Grenfell St, Adelaide',
+);
+
+
 =head2 setup_meeting
 
 Setup this meeting, by id and date.
@@ -32,6 +37,10 @@ sub setup_meeting {
   croak "No date" unless $dt;
 
   my $meeting = PM::Meeting->new( date => $dt, id => $id );
+
+  my $venue   = $date_venue_override{$dt->format_cldr('yyyy-MM-dd')} || $default_venue;
+  $meeting->venue($venue);
+
   $meeting->venue($default_venue);
 
   return $meeting;

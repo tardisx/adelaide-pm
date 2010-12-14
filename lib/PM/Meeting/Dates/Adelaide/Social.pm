@@ -31,7 +31,8 @@ our %date_override = (
 
 # Override venues.
 our %date_venue_override = (
-   '2010-04-23' => 'Brecknock'
+   '2010-04-23' => 'Brecknock',
+   '2010-12-16' => 'Unknown!',
 );
 
 # Default venue.
