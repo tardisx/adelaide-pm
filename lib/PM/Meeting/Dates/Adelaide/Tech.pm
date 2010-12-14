@@ -41,8 +41,6 @@ sub setup_meeting {
   my $venue   = $date_venue_override{$dt->format_cldr('yyyy-MM-dd')} || $default_venue;
   $meeting->venue($venue);
 
-  $meeting->venue($default_venue);
-
   return $meeting;
 }
 
