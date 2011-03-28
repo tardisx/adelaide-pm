@@ -1,14 +1,5 @@
-Here lies the code for generating the Adelaide Perl Mongers web site!
-
-It contains:
-
-* some perl libs for dealing with meeting dates (in lib/)
-* some template files for generating the web site (in web/)
-* some (primitive) tests (in t/)
-* some scripts to tie it all together (bin/)
-
-To build the website do:
-
-$ chdir web
-$ ttree --EVAL_PERL -f lib/site.cfg -a --verbose 
+This codebase was originally for generating the Adelaide perl mongers
+web site. It's now evolved to something a bit more generic. Basically
+a news/information site for any group which has regular meetings and
+a mailing list. Like perl mongers!
 
