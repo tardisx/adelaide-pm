@@ -66,27 +66,32 @@
       </div>
     </div>
 
+[% PERL %]
+use lib '../lib';
+use PM::Meeting::Dates::Adelaide::Social;
+use PM::Meeting::Dates::Adelaide::Tech;
+$stash->{next_tech}   = PM::Meeting::Dates::Adelaide::Tech->new()->next_meeting();
+$stash->{next_social} = PM::Meeting::Dates::Adelaide::Social->new()->next_meeting();
+$stash->{last_social} = PM::Meeting::Dates::Adelaide::Social->new()->last_meeting();
+[% END %]
+
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li class="active"><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li class="nav-header">Sidebar</li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li class="nav-header">Sidebar</li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
+              <li class="nav-header">Previous social</li>
+              <li><a href="/meetings/social_[% last_social.id %].html">
+                  [% last_social.nice_date %]</a>
+              </li>
+              <li class="nav-header">Next social</li>
+              <li><a href="/meetings/social_[% next_social.id %].html">
+                  [% next_social.nice_date %]</a>
+              </li>
+              <li class="nav-header">Next tech meetup</li>
+              <li><a href="/meetings/tech_[% next_tech.id %].html">
+                  [% next_tech.nice_date || 'undef' %]</a>
+              </li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
