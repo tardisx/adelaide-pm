@@ -6,7 +6,7 @@ use File::Temp qw/tempfile/;
 
 ok (chdir 'web', 'changed to web dir');
 
-system ("/usr/local/bin/ttree --EVAL_PERL -f lib/site.cfg -a --verbose > $filename");
+system ("ttree --EVAL_PERL -f lib/site.cfg -a --verbose > $filename");
 ok ($? == 0, 'ttree ran a bit at least');
 
 my @lines = <$fh>;

@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 use strict;
 use warnings;
@@ -15,7 +15,7 @@ my @verbose_args;
 @verbose_args = ('--verbose') if ($verbose);
 
 chdir 'web' || die $!;
-system ('/usr/local/bin/ttree', '--EVAL_PERL', '-f', 'lib/site.cfg', '-a', @verbose_args);
+system ('ttree', '--EVAL_PERL', '-f', 'lib/site.cfg', '-a', @verbose_args);
 
 system('rsync', '--delete', '-qa',  'html/', '/home/justin/web/adelaidepm/')
   if $upload;
